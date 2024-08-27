@@ -9,7 +9,7 @@ source activate mlfold
 
 folder_with_pdbs="1n8z"
 
-output_dir="outputs/1n8z_1000k"
+output_dir="outputs/1n8z_abmpnn_s1"
 if [ ! -d $output_dir ]
 then
     mkdir -p $output_dir
@@ -34,10 +34,11 @@ python -u protein_mpnn_run.py \
         --chain_id_jsonl $path_for_assigned_chains \
         --fixed_positions_jsonl $path_for_fixed_positions \
         --out_folder $output_dir \
-        --num_seq_per_target 1000000 \
-        --sampling_temp "0.3" \
+        --num_seq_per_target 1 \
+        --sampling_temp "1" \
         --seed 37 \
-        --batch_size 16
+        --batch_size 1 \
+        --save_probs 1
 
 # --path_to_model_weights "abmpnn_model_weights" \
 # --model_name "abmpnn" \
